@@ -88,7 +88,6 @@ class SMTP(object):
         to_addrs = envelope._to + envelope._cc + envelope._bcc
 
         return self._conn.sendmail(msg['From'], to_addrs, msg.as_string())
-        #return self._conn.sendmail(msg['From'], msg['To'], msg.as_string())
 
 
 class GMailSMTP(SMTP):

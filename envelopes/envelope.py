@@ -111,12 +111,18 @@ class Envelope(object):
             self._parts.append(('text/html', html_body, charset))
 
         if cc_addr:
-            self._cc = cc_addr
+            if isinstance(cc_addr, list):
+                self._cc = cc_addr
+            else:
+                self._cc = [cc_addr]
         else:
             self._cc = []
 
         if bcc_addr:
-            self._bcc = bcc_addr
+            if isinstance(bcc_addr, list):
+                self._bcc = bcc_addr
+            else:
+                self._bcc = [bcc_addr]
         else:
             self._bcc = []
 
@@ -275,9 +281,6 @@ class Envelope(object):
 
         if self._cc:
             msg['CC'] = self._addrs_to_header(self._cc)
-
-        if self._bcc:
-            msg['BCC'] = self._addrs_to_header(self._bcc)
 
         if self._headers:
             for key, value in self._headers.items():

@@ -80,8 +80,8 @@ class Envelope(object):
     :param subject: message subject
     :param html_body: optional HTML part of the message
     :param text_body: optional plain text part of the message
-    :param cc_addrs: optional list of CC address
-    :param bcc_addrs: optional list of BCC address
+    :param cc_addr: optional single CC address or list of CC addresses
+    :param bcc_addr: optional single BCC address or list of BCC addresses
     :param headers: optional dictionary of headers
     :param charset: message charset
     """

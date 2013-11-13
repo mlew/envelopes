@@ -85,7 +85,7 @@ class SMTP(object):
             self._connect()
 
         msg = envelope.to_mime_message()
-        to_addrs = envelope._to + envelope._cc + envelope._bcc
+        to_addrs = [envelope._addrs_to_header([addr]) for addr in envelope._to + envelope._cc + envelope._bcc]
 
         return self._conn.sendmail(msg['From'], to_addrs, msg.as_string())
 
